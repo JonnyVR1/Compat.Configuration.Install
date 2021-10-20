@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.10.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.3" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.3" />
+    <PackageReference Include="MSTestExtensions" Version="4.0.0" NoWarn="NU1701"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compat.Configuration.Install\Compat.Configuration.Install.csproj" />
+  </ItemGroup>
+</Project>

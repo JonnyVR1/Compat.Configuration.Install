@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <AssemblyName>Compat.Configuration.Install</AssemblyName>
+    <AssemblyTitle>Compat.Configuration.Install</AssemblyTitle>
+    <PackageId>Compat.Configuration.Install</PackageId>
+    <LangVersion>7.2</LangVersion>
+    <RootNamespace>
+    </RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>Porting of Compat.Configuration.Install for .NET Core. (.NET 4.0 version)</Description>
+    <Product>Core.Compat.Configuration.Install</Product>
+    <PackageLicenseUrl>https://github.com/cklutz/Core.Compat.Configuration.Install/blob/master/license.md</PackageLicenseUrl>
+    <Copyright>Copyright (C) 2018 Alexander Chermyanin, Christian Klutz</Copyright>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>Install, Component</PackageTags>
+    <PackageProjectUrl>https://github.com/cklutz/Core.Compat.Configuration.Install</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cklutz/Core.Compat.Configuration.Install</RepositoryUrl>
+    <PackageReleaseNotes>
+      Using the official System.Diagnostic classes. Thanks Gábor Zavarkó.
+      For from https://github.com/flamencist/Core.Compat.Configuration.Install.
+      Renamed to "Compat.Configuration.Install".
+      Removed dependency on Newtonsoft.Json, replaced with NetDataContractSerializer from https://www.nuget.org/packages/Compat.Runtime.Serialization/.
+      Updated to .NET 5.0.
+    </PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Compat.Runtime.Serialization" Version="1.0.1" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="5.0.1" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="5.0.1" />
+  </ItemGroup>
+</Project>

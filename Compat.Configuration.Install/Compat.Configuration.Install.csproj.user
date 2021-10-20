@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="System.Configuration.Install\AssemblyInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="System.Configuration.Install\ComponentInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="System.Configuration.Install\Installer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="System.Configuration.Install\TransactedInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="System.Diagnostics\EventLogInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="System.Diagnostics\PerformanceCounterInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

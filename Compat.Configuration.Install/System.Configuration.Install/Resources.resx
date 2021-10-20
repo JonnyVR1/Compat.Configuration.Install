@@ -80,7 +80,7 @@ of the assemblies on the command line along with the -? or -help option.
   <data name="InstallException"><value>An exception occurred while trying to find the installers in the {0} assembly.</value></data>
   <data name="PCCounterName"><value>Counter name of the performance counter object.</value></data>
   <data name="InstallDictionaryMissingValues"><value>The {0} dictionary does not contain the expected values and might have been corrupted.</value></data>
-  <data name="WrappedExceptionSource"><value>Wrapped Exception from System.Configuration.Install.Installer</value></data>
+  <data name="WrappedExceptionSource"><value>Wrapped Exception from Compat.Configuration.Install.Installer</value></data>
   <data name="InstallFileLocation"><value>The file is located at {0}.</value></data>
   <data name="InstallInfoTransacted"><value>Running a transacted installation.</value></data>
   <data name="InstallFileNotFound"><value>The {0} file could not be found.</value></data>
