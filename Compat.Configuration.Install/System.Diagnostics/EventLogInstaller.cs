@@ -5,7 +5,9 @@ using System.Configuration.Install;
 
 namespace System.Diagnostics
 {
-    /// <summary>Allows you to install and configure an event log that your application reads from or writes to when running. </summary>
+    /// <summary>
+    /// Allows you to install and configure an event log that your application reads from or writes to when running.
+    /// </summary>
     public class EventLogInstaller : ComponentInstaller
     {
         private readonly EventSourceCreationData _sourceData = new EventSourceCreationData(null, null);
@@ -39,6 +41,8 @@ namespace System.Diagnostics
             {
                 if (_sourceData.LogName == null && _sourceData.Source != null)
                 {
+                    // they've told us a source, but they haven't told us a log name.
+                    // try to deduce the log name from the source name.
                     _sourceData.LogName = EventLog.LogNameFromSourceName(_sourceData.Source, ".");
                 }
 
@@ -128,19 +132,28 @@ namespace System.Diagnostics
             }
 
             stateSaver["baseInstalledAndPlatformOK"] = true;
-            bool flag = EventLog.Exists(Log, ".");
-            stateSaver["logExists"] = flag;
-            bool flag2 = EventLog.SourceExists(Source, ".");
-            stateSaver["alreadyRegistered"] = flag2;
-            if (flag2)
+
+            // remember whether the log was already there and if the source was already registered
+            bool logExists = EventLog.Exists(Log, ".");
+            stateSaver["logExists"] = logExists;
+
+            bool alreadyRegistered = EventLog.SourceExists(Source, ".");
+            stateSaver["alreadyRegistered"] = alreadyRegistered;
+
+            if (alreadyRegistered)
             {
-                string a = EventLog.LogNameFromSourceName(Source, ".");
-                if (a == Log)
+                string oldLog = EventLog.LogNameFromSourceName(Source, ".");
+                if (oldLog == Log)
                 {
+                    // The source exists, and it's on the right log, so we do nothing
+                    // here.  If oldLog != Log, we'll try to create the source below
+                    // and it will fail, because the source already exists on another
+                    // log.
                     return;
                 }
             }
 
+            // do the installation.
             EventLog.CreateEventSource(_sourceData);
         }
 
@@ -164,10 +177,11 @@ namespace System.Diagnostics
                 return;
             }
 
-            object obj = savedState["alreadyRegistered"];
-            bool flag = obj != null && (bool)obj;
-            if (!flag && EventLog.SourceExists(Source, "."))
+            object alreadyRegisteredObj = savedState["alreadyRegistered"];
+            bool alreadyRegistered = alreadyRegisteredObj != null && (bool)alreadyRegisteredObj;
+            if (!alreadyRegistered && EventLog.SourceExists(Source, "."))
             {
+                // delete the source we installed, assuming it succeeded. Then put back whatever used to be there.
                 EventLog.DeleteEventSource(Source, ".");
             }
         }
@@ -179,7 +193,7 @@ namespace System.Diagnostics
         public override void Uninstall(IDictionary savedState)
         {
             base.Uninstall(savedState);
-            if (UninstallAction != 0)
+            if (UninstallAction != UninstallAction.Remove)
             {
                 return;
             }
@@ -197,6 +211,9 @@ namespace System.Diagnostics
                 base.Context.LogMessage(Res.GetString("LocalSourceNotRegisteredWarning", Source));
             }
 
+            // now test to see if the log has any more sources in it. If not, we
+            // should remove the log entirely.
+            // we have to do this by inspecting the registry.
             RegistryKey registryKey = Registry.LocalMachine;
             RegistryKey registryKey2 = null;
             try
@@ -213,6 +230,7 @@ namespace System.Diagnostics
                     if (subKeyNames == null || subKeyNames.Length == 0 || (subKeyNames.Length == 1 && string.Compare(subKeyNames[0], Log, StringComparison.OrdinalIgnoreCase) == 0))
                     {
                         base.Context.LogMessage(Res.GetString("DeletingEventLog", Log));
+                        // there are no sources in this log. Delete the log.
                         EventLog.Delete(Log, ".");
                     }
                 }
