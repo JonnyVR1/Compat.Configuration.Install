@@ -1,33 +1,36 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <AssemblyName>Compat.Configuration.Install</AssemblyName>
     <AssemblyTitle>Compat.Configuration.Install</AssemblyTitle>
     <PackageId>Compat.Configuration.Install</PackageId>
     <LangVersion>7.2</LangVersion>
     <RootNamespace>
     </RootNamespace>
-    <Version>1.0.0</Version>
+    <Version>1.0.3</Version>
     <Description>Porting of Compat.Configuration.Install for .NET Core. (.NET 4.0 version)</Description>
-    <Product>Core.Compat.Configuration.Install</Product>
-    <PackageLicenseUrl>https://github.com/cklutz/Core.Compat.Configuration.Install/blob/master/license.md</PackageLicenseUrl>
+    <Product>Compat.Configuration.Install</Product>
+    <PackageLicenseFile>license.md</PackageLicenseFile>
     <Copyright>Copyright (C) 2018 Alexander Chermyanin, Christian Klutz</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Install, Component</PackageTags>
-    <PackageProjectUrl>https://github.com/cklutz/Core.Compat.Configuration.Install</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/cklutz/Core.Compat.Configuration.Install</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/cklutz/Compat.Configuration.Install</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cklutz/Compat.Configuration.Install</RepositoryUrl>
     <PackageReleaseNotes>
       Using the official System.Diagnostic classes. Thanks Gábor Zavarkó.
       For from https://github.com/flamencist/Core.Compat.Configuration.Install.
       Renamed to "Compat.Configuration.Install".
       Removed dependency on Newtonsoft.Json, replaced with NetDataContractSerializer from https://www.nuget.org/packages/Compat.Runtime.Serialization/.
-      Updated to .NET 5.0.
+      Updated to .NET 6.0.
     </PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Compat.Runtime.Serialization" Version="1.0.1" />
-    <PackageReference Include="System.Diagnostics.EventLog" Version="5.0.1" />
-    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="5.0.1" />
+    <None Include="..\license.md" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Compat.Runtime.Serialization" Version="1.0.2" />
+    <PackageReference Include="System.Diagnostics.EventLog" Version="6.0.0" />
+    <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="6.0.0" />
   </ItemGroup>
 </Project>

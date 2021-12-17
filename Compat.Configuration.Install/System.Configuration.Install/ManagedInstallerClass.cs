@@ -73,7 +73,7 @@ namespace System.Configuration.Install
 			{
 				if (showHelp)
 				{
-					throw ex;
+					throw;
 				}
 				throw new InvalidOperationException(Res.GetString("InstallInitializeException", ex.GetType().FullName, ex.Message));
 			}
