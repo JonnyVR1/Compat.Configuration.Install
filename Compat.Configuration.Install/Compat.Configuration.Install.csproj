@@ -1,27 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <AssemblyName>Compat.Configuration.Install</AssemblyName>
-    <AssemblyTitle>Compat.Configuration.Install</AssemblyTitle>
-    <PackageId>Compat.Configuration.Install</PackageId>
+    <TargetFrameworks>net8.0-windows;netstandard2.1</TargetFrameworks>
+    <AssemblyName>Compat.System.Configuration.Install</AssemblyName>
+    <AssemblyTitle>Compat.System.Configuration.Install</AssemblyTitle>
+    <PackageId>Compat.System.Configuration.Install</PackageId>
     <LangVersion>7.2</LangVersion>
     <RootNamespace>
     </RootNamespace>
     <Version>1.0.5</Version>
-    <Description>Porting of Compat.Configuration.Install for .NET Core. (.NET 4.0 version)</Description>
-    <Product>Compat.Configuration.Install</Product>
+    <Description>Porting of System.Configuration.Install for .NET Core. (.NET 4.0 version)</Description>
+    <Product>Compat.System.Configuration.Install</Product>
     <PackageLicenseFile>license.md</PackageLicenseFile>
     <Copyright>Copyright (C) 2018 Alexander Chermyanin, Christian Klutz</Copyright>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>Install, Component</PackageTags>
-    <PackageProjectUrl>https://github.com/cklutz/Compat.Configuration.Install</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/cklutz/Compat.Configuration.Install</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/JonnyVR1/Compat.Configuration.Install</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JonnyVR1/Compat.Configuration.Install</RepositoryUrl>
     <PackageReleaseNotes>
       Using the official System.Diagnostic classes. Thanks Gábor Zavarkó.
       For from https://github.com/flamencist/Core.Compat.Configuration.Install.
-      Renamed to "Compat.Configuration.Install".
-      Removed dependency on Newtonsoft.Json, replaced with NetDataContractSerializer from https://www.nuget.org/packages/Compat.Runtime.Serialization/.
-      Updated to .NET 6.0.
+      Renamed to "Compat.System.Configuration.Install".
+      Updated to .NET 8.0.
     </PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
